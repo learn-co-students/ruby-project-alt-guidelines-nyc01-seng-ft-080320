@@ -1,5 +1,6 @@
 Client.destroy_all
 TattooShop.destroy_all
+Artist.destroy_all 
 
 alex = Client.create(name: "Alex", location: "Bronx")
 sarahlee = Client.create(name:"Sarah Lee", location: "Bronx")
@@ -12,3 +13,7 @@ bctattoo = TattooShop.create(name: "B.C. Tattoo", location: "Manhattan", average
 gnostic = TattooShop.create(name: "Gnostic", location: "Queens", average_review: 3, ambiance: "Casual", operational_hours: "12PM to 5PM", does_piercings?: true, recommended?: false)
 queenstattoo = TattooShop.create(name: "Queens Tattoo", location: "Queens", average_review: 4, ambiance: "Casual", operational_hours: "7PM to 7PM", does_piercings?: true, recommended?: true)
 
+jack = Artist.create(name: "Jack", style: "traditional", does_piercings?: true, tattooshop: brooklyntattoo)
+angela = Artist.create(name: "Angela", style: "black work", does_piercings?: false, tattooshop: bctattoo)
+dj = Artist.create(name: "DJ", style: "new school", does_piercings?: false, tattooshop: gnostic)
+omar = Artist.create(name: "Omar", style: "tribal", does_piercings?: false, tattooshop: queenstatoo)
