@@ -12,6 +12,10 @@ brooklyntattoo = TattooShop.create(name: "Brooklyn Tattoo", location: "Brooklyn"
 bctattoo = TattooShop.create(name: "B.C. Tattoo", location: "Manhattan", average_review: 3, ambiance: "Cool", operational_hours: "12PM to 6PM", does_piercings?: false, recommended?: true)
 gnostic = TattooShop.create(name: "Gnostic", location: "Queens", average_review: 3, ambiance: "Casual", operational_hours: "12PM to 5PM", does_piercings?: true, recommended?: false)
 queenstattoo = TattooShop.create(name: "Queens Tattoo", location: "Queens", average_review: 4, ambiance: "Casual", operational_hours: "7PM to 7PM", does_piercings?: true, recommended?: true)
+hustleparlor = TattooShop.create(name: "Hustle Parlor", location: "Brooklyn", average_review: 3, ambiance: "Upscale", operational_hours: "12PM to 12AM", does_piercings?: true, recommended?: true)
+williamsburger = TattooShop.create(name: "Williamsburger", location: "Brooklyn", average_review: 2, ambiance: "Dirty", operational_hours: "12PM to 7PM", does_piercings?: false, recommended?: false)
+
+
 
 jack = Artist.create(name: "Jack", style: "traditional", does_piercings?: true, tattooshop: brooklyntattoo)
 angela = Artist.create(name: "Angela", style: "black work", does_piercings?: false, tattooshop: bctattoo)
