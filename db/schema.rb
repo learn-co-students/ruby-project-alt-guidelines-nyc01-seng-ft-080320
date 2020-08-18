@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_160147) do
     t.string "time"
     t.string "description"
     t.integer "artist_id"
-    t.integer "tattooshop_id"
+    t.integer "tattoo_shop_id"
     t.integer "client_id"
   end
 
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_160147) do
     t.string "name"
     t.string "style"
     t.boolean "does_piercings?"
-    t.integer "tattooshop_id"
+    t.integer "tattoo_shop_id"
   end
 
   create_table "blacklists", force: :cascade do |t|
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_160147) do
     t.boolean "lifetime_ban?"
     t.integer "date_of_ban"
     t.integer "client_id"
-    t.integer "tattooshop_id"
+    t.integer "tattoo_shop_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_160147) do
     t.integer "blacklist_id"
   end
 
-  create_table "tattooshops", force: :cascade do |t|
+  create_table "tattoo_shops", force: :cascade do |t|
     t.string "name"
     t.string "location"
     t.float "average_review"

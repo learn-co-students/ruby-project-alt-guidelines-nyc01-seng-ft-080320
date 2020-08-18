@@ -17,7 +17,7 @@ williamsburger = TattooShop.create(name: "Williamsburger", location: "Brooklyn",
 paintshop = TattooShop.create(name: "Paint Shop", location: "Queens", average_review: 3, ambiance: "Cool", operational_hours: "10AM to 8PM", does_piercings?: true, recommended?: true)
 tortoiseshell = TattooShop.create(name: "Tortoise Shell", location: "Manhattan", average_review: 4, ambiance: "Casual", operational_hours: "12PM to 8PM", does_piercings?: false, recommended?: true )
 
-jack = Artist.create(name: "Jack", style: "traditional", does_piercings?: true, tattooshop: brooklyntattoo)
-angela = Artist.create(name: "Angela", style: "black work", does_piercings?: false, tattooshop: bctattoo)
-dj = Artist.create(name: "DJ", style: "new school", does_piercings?: false, tattooshop: gnostic)
-omar = Artist.create(name: "Omar", style: "tribal", does_piercings?: false, tattooshop: queenstatoo)
+jack = Artist.create(name: "Jack", style: "traditional", does_piercings?: true, tattoo_shop: brooklyntattoo)
+angela = Artist.create(name: "Angela", style: "black work", does_piercings?: false, tattoo_shop: bctattoo)
+dj = Artist.create(name: "DJ", style: "new school", does_piercings?: false, tattoo_shop: gnostic)
+omar = Artist.create(name: "Omar", style: "tribal", does_piercings?: false, tattoo_shop: queenstattoo)
