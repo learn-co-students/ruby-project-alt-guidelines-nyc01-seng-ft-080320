@@ -8,5 +8,6 @@ class CreateTattooShop < ActiveRecord::Migration[5.2]
       t.float :operational_hours
       t.boolean :does_piercings?
       t.boolean :recommended?
+    end
   end
 end
