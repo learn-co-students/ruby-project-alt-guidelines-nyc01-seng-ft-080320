@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_08_18_160147) do
 
   create_table "appointments", force: :cascade do |t|
-    t.integer "date"
+    t.string "date"
     t.string "time"
     t.string "description"
     t.integer "artist_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_160147) do
   create_table "blacklists", force: :cascade do |t|
     t.string "reason_for_ban"
     t.boolean "lifetime_ban?"
-    t.integer "date_of_ban"
+    t.string "date_of_ban"
     t.integer "client_id"
     t.integer "tattoo_shop_id"
   end

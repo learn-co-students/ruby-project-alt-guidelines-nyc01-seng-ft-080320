@@ -1,6 +1,7 @@
 Client.destroy_all
 TattooShop.destroy_all
 Artist.destroy_all 
+Blacklist.destroy_all
 
 alex = Client.create(name: "Alex", location: "Bronx")
 sarahlee = Client.create(name:"Sarah Lee", location: "Bronx")
@@ -35,3 +36,5 @@ kim = Artist.create(name: "Kim", style: "black work", does_piercings?: false, ta
 oliver = Artist.create(name: "Oliver", style: "new school", does_piercings?: true, tattoo_shop: gnostic)
 ramon = Artist.create(name: "Ramon", style: "traditional", does_piercings?: false, tattoo_shop: williamsburger)
 cynthia = Artist.create(name: "Cynthia", style: "tribal", does_piercings?: true, tattoo_shop: tortoiseshell)
+
+
