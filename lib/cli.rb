@@ -1,24 +1,61 @@
-prompt = TTY::Prompt.new
+# prompt = TTY::Prompt.new
 
-choices = %w(Manhattan Brooklyn Queens Bronx StatenIsland)
-prompt.select("Welcome to TattedPortal! What neighborhood are you looking for artists in?", choices)
-prompt.ask("Great! Can you give us your name? We use this information to start setting up your appointment.", required: true)
-prompt.multiline("What are you interested in getting?")
+# choices = ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"]
+# prompt.select("Welcome to TattedPortal! What neighborhood are you looking for artists in?", choices)
+# prompt.ask("Great! Can you give us your name? We use this information to start setting up your appointment.", required: true)
 
 
-# call ask with the question for simple input:
-# prompt.ask("What is your name?", default: ENV["USER"])
+# #TODO
 
-# To confirm input use yes?:
-# prompt.yes?("Do you like Ruby?")
+# # what are you interested in getting should equal to the description of appointment
+require 'pry'
+def artist_lookup
+    prompt = TTY::Prompt.new
+    # artistname = prompt.ask("What's their name?") #client is asked for the name, set to artistname
+    #     if Artist.find_by name: artistname.to_s #if it exists in artist.all return the artist instance
+           # "Great! We love them! Would you like to make an appointment" #another method furthering the appointment
+        # else "We don't seem to know who that is..."
+        #end
+        artistname = prompt.ask("What's their name?") 
+        if Artist.all.include?(artistname) #Artist.find_by name: 
+            prompt.ask("Great! We love them! Would you like to make an appointment?")
+        end
+end
 
-# Asking question with list of options couldn't be easier using select like so:
-# prompt.select("Choose your destiny?", %w(Scorpion Kano Jax))
+def look_for_artist_by_name
+    prompt = TTY::Prompt.new
+    answer = prompt.yes?("Cool. Do you know the name of the artist you want?")
+    answer == "yes"
+    artist_lookup
+    # else answer == "No"
+    #      "No worries – we'll help you start a new search."
+    # end
+end
 
-# Also, asking multiple choice questions is a breeze with multi_select:
-# choices = %w(vodka beer wine whisky bourbon)
-# prompt.multi_select("Select drinks?", choices)
+def make_an_appointment
+end
 
-# To ask for a selection from enumerated list you can use enum_select:
-# choices = %w(emacs nano vim)
-# prompt.enum_select("Select an editor?", choices)
+def change_appointment 
+end
+
+
+def welcoming_new_client
+    prompt = TTY::Prompt.new
+    newclient = prompt.ask("Welcome to TattedPortal! What's your name?", required: true)
+    puts "Great! Welcome #{newclient}."
+    searchoptions = ["Look for an artist", "Make an appointment", "Change appointment"]
+    selectedoption = prompt.select("What would you like to do?", searchoptions)
+    if selectedoption == searchoptions[0] 
+        look_for_artist_by_name
+    elsif selectedoption == searchoptions[1]
+        make_an_appointment 
+    elsif selectedoption == searchoptions[2]
+        change_appointment
+    end
+end
+
+
+
+
+
+
