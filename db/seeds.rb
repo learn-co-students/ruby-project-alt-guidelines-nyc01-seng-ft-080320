@@ -7,7 +7,11 @@ sarahlee = Client.create(name:"Sarah Lee", location: "Bronx")
 sarah = Client.create(name:"Sarah", location: "Brooklyn")
 joe = Client.create(name:"Joe", location: "Queens")
 paulo = Client.create(name:"Paulo", location: "Brooklyn")
-ruby = Client.create(name: "Ruby", "Manhattan")
+ruby = Client.create(name: "Ruby", location: "Manhattan")
+thelma = Client.create(name: "Thelma", location: "Queens")
+antonio = Client.create(name: "Antonio", location: "Manhattan")
+desmond = Client.create(name: "Desmond", location: "Brooklyn")
+francis = Client.create(name: "Francis", location: "Brooklyn")
 
 brooklyntattoo = TattooShop.create(name: "Brooklyn Tattoo", location: "Brooklyn", average_review: 4, ambiance: "Casual", operational_hours: "10AM to 8PM", does_piercings?: true, recommended?: true)
 bctattoo = TattooShop.create(name: "B.C. Tattoo", location: "Manhattan", average_review: 3, ambiance: "Cool", operational_hours: "12PM to 6PM", does_piercings?: false, recommended?: true)
@@ -17,6 +21,9 @@ hustleparlor = TattooShop.create(name: "Hustle Parlor", location: "Brooklyn", av
 williamsburger = TattooShop.create(name: "Williamsburger", location: "Brooklyn", average_review: 2, ambiance: "Dirty", operational_hours: "12PM to 7PM", does_piercings?: false, recommended?: false)
 paintshop = TattooShop.create(name: "Paint Shop", location: "Queens", average_review: 3, ambiance: "Cool", operational_hours: "10AM to 8PM", does_piercings?: true, recommended?: true)
 tortoiseshell = TattooShop.create(name: "Tortoise Shell", location: "Manhattan", average_review: 4, ambiance: "Casual", operational_hours: "12PM to 8PM", does_piercings?: false, recommended?: true )
+applejack = TattooShop.create(name: "Apple Jack", location: "Manhattan", average_review: 3, ambiance: "Cool", operational_hours: "10AM to 9PM", does_piercings?: false, recommended?: true)
+blackhole = TattooShop.create(name: "Black Hole", location: "Queens", average_review: 4, ambiance: "Casual", operational_hours: "12PM to 7PM", does_piercings?: true, recommended?: true)
+
 
 jack = Artist.create(name: "Jack", style: "traditional", does_piercings?: true, tattoo_shop: brooklyntattoo)
 angela = Artist.create(name: "Angela", style: "black work", does_piercings?: false, tattoo_shop: bctattoo)
