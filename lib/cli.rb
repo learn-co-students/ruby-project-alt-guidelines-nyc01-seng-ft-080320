@@ -27,8 +27,7 @@ def artist_lookup
 #                     binding.pry
             # artists.name.include?(artistname.to_s)
             # end
-           
-             
+                  
 end
 
 def look_for_artist_by_name
@@ -44,18 +43,22 @@ end
 def make_an_appointment
     prompt = TTY::Prompt.new(track_history: false)
     #appointmentoptions = ["date", "time", "Describe whay you'd like done", ]
+    @@stylechosen
     apptdetails = prompt.collect do 
         key(:date).ask("What date would you like your appointment to be on?")
         
         key(:time).ask("What time would you like your appointment?")
-       # specialties = ["black work", "traditional", "new school", "tribal", "traditional", "no preference"]
-        key(:description).select("What kind of style are you looking for?", ["black work", "traditional", "new school", "tribal", "traditional", "no preference"])
-           
+   
+        @@stylechosen = key(:description).select("What kind of style are you looking for?", ["black work", "traditional", "new school", "tribal", "traditional", "no preference"])
+        #binding.pry
+
     end
-    if :description == "black work"
-        Artist.all.map {|artists| artists.style == "black work"}
-end
-    apptdetails
+
+        Artist.all.select {|artists| artists.style == @@stylechosen} 
+        binding.pry
+        #Artist.all.map {|artists| artists.style == "black work"}
+    # end
+    # apptdetails
     
 end
 
