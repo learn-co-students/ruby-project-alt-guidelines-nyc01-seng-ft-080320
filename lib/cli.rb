@@ -1,4 +1,4 @@
-require 'pry'# prompt = TTY::Prompt.new
+require 'pry'
 
 # choices = ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"]
 # prompt.select("Welcome to TattedPortal! What neighborhood are you looking for artists in?", choices)
@@ -45,14 +45,19 @@ end
 def make_an_appointment
     prompt = TTY::Prompt.new
         stylechosen = prompt.select("What kind of style are you looking for?", ["black work", "traditional", "new school", "tribal", "traditional", "no preference"])
-        arrayofartists = []
+        artiststring = []
+        artistarray = []
         Artist.all.select do |artists| 
             if artists.style == stylechosen
-            arrayofartists << artists.name
+                artiststring << "#{artists.name} – Does #{artists.style} at #{artists.tattoo_shop.name} in #{artists.tattoo_shop.location}" && artistarray = artists
             end
         end
-        prompt.select("Here are some experts in that style", arrayofartists) 
+        chosenartist = prompt.multi_select("Here are some experts in that style. Choose one to make an appointment!", artiststring) 
+        artistarray
         #binding.pry
+        #Appointment.create()
+
+        
  
            
 end
