@@ -10,12 +10,7 @@ require 'pry'# prompt = TTY::Prompt.new
 # # what are you interested in getting should equal to the description of appointment
 require 'pry'
 def artist_lookup
-    prompt = TTY::Prompt.new(track_history: false)
-    # artistname = prompt.ask("What's their name?") #client is asked for the name, set to artistname
-    #     if Artist.find_by name: artistname.to_s #if it exists in artist.all return the artist instance
-           # "Great! We love them! Would you like to make an appointment" #another method furthering the appointment
-        # else "We don't seem to know who that is..."
-        #end  
+    prompt = TTY::Prompt.new
         artistname = prompt.ask("What's their name?") do |q|
                          q.modify :capitalize
                      end
@@ -23,6 +18,7 @@ def artist_lookup
                         prompt.yes?("Great! We love #{artistname}! Would you like to make an appointment?")
                         make_an_appointment 
                      else prompt.ask("We dont know 'em!")
+                        help_search
                      end
 #                     binding.pry
             # artists.name.include?(artistname.to_s)
@@ -30,36 +26,35 @@ def artist_lookup
                   
 end
 
-def look_for_artist_by_name
-    prompt = TTY::Prompt.new(track_history: false)
-    answer = prompt.yes?("Cool. Do you know the name of the artist you want?")
-    answer == "yes"
-    artist_lookup
-    # else answer == "No"
-    #      "No worries – we'll help you start a new search."
-    # end
+def help_search
+    prompt = TTY::Prompt.new
+    prompt.select("No worries – we'll help you start a new search. How would you like to filter your search?",["Style", "Location", "Also Does Piercings", "Ambiance"])
 end
 
-def make_an_appointment
-    prompt = TTY::Prompt.new(track_history: false)
-    #appointmentoptions = ["date", "time", "Describe whay you'd like done", ]
-    @@stylechosen
-    apptdetails = prompt.collect do 
-        key(:date).ask("What date would you like your appointment to be on?")
-        
-        key(:time).ask("What time would you like your appointment?")
-   
-        @@stylechosen = key(:description).select("What kind of style are you looking for?", ["black work", "traditional", "new school", "tribal", "traditional", "no preference"])
-        #binding.pry
-
-    end
-
-        Artist.all.select {|artists| artists.style == @@stylechosen} 
-        binding.pry
-        #Artist.all.map {|artists| artists.style == "black work"}
-    # end
-    # apptdetails
+# def look_for_artist_by_name
+#     prompt = TTY::Prompt.new
+#     answer = prompt.yes?("Cool. Do you know the name of the artist you want?")
+#     answer == "yes"
+#         artist_lookup
+#     answer == "No"
+#          help_search
     
+# end
+
+#appointmentoptions = ["date", "time", "Describe whay you'd like done", ]
+def make_an_appointment
+    prompt = TTY::Prompt.new
+        stylechosen = prompt.select("What kind of style are you looking for?", ["black work", "traditional", "new school", "tribal", "traditional", "no preference"])
+        arrayofartists = []
+        Artist.all.select do |artists| 
+            if artists.style == stylechosen
+            arrayofartists << artists.name
+            end
+        end
+        prompt.select("Here are some experts in that style", arrayofartists) 
+        #binding.pry
+ 
+           
 end
 
 def change_appointment 
@@ -69,13 +64,13 @@ end
 
 
 def welcoming_new_client
-    prompt = TTY::Prompt.new(track_history: false)
+    prompt = TTY::Prompt.new
     newclient = prompt.ask("Welcome to TattedPortal! What's your name?", required: true)
     puts "Great! Welcome #{newclient}."
     searchoptions = ["Look for an artist", "Make an appointment", "Change appointment"]
     selectedoption = prompt.select("What would you like to do?", searchoptions)
     if selectedoption == searchoptions[0] 
-        look_for_artist_by_name
+        artist_lookup
     elsif selectedoption == searchoptions[1]
         make_an_appointment 
     elsif selectedoption == searchoptions[2]
